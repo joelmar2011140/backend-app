@@ -22,7 +22,7 @@ model Address {
   id     String @id @default(uuid())
   city   String
   state  String
-  user   User   @relation(fields: [userId], references: [id])
+  user   User?  @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String
 }
 
@@ -32,6 +32,6 @@ model SocialNetwork {
   name       String?
   profileUrl String
   urlImage   String
-  user       User    @relation(fields: [userId], references: [id])
+  user       User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId     String
 }

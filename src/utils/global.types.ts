@@ -6,7 +6,7 @@ export interface IError {
 }
 
 export interface ISuccess {
-  data: any
+  data?: any
   return: {
     status: number
     message: string

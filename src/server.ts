@@ -11,6 +11,7 @@ function startServer (): void {
   const server = createServer(app)
   server.listen(port, async () => {
     try {
+      console.clear()
       logger.info(`Server running on port ${port}`)
       await startDb()
     } catch (err: any) {

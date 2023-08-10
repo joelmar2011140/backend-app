@@ -5,6 +5,7 @@ import cors from 'cors'
 import morgan from 'morgan'
 import { type Application, json, urlencoded } from 'express'
 import { apiRoutes } from '../app/app.routes'
+import { erroMiddleware, error404 } from './error'
 
 export function useMiddlewares (app: Application): void {
   app.use(helmet())
@@ -20,4 +21,6 @@ export function useMiddlewares (app: Application): void {
   app.use(urlencoded({ extended: true }))
   app.use(morgan('common'))
   app.use('/api', apiRoutes)
+  app.use(error404)
+  app.use(erroMiddleware)
 }

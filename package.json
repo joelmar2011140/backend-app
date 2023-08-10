@@ -5,7 +5,26 @@
   "main": "index.js",
   "author": "Joel Marinho <joeldeveloper2011140@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "lint:fix": "eslint --ext .ts src --fix",
+    "dev": "ts-node-dev src/server --respawn",
+    "build": "yarn lint:fix && tsc",
+    "start": "node dist/server"
+  },
   "devDependencies": {
-    "git-commit-msg-linter": "5.0.4"
+    "@types/node": "20.4.9",
+    "@typescript-eslint/eslint-plugin": "^5.52.0",
+    "eslint": "^8.0.1",
+    "eslint-config-standard-with-typescript": "^37.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
+    "eslint-plugin-promise": "^6.0.0",
+    "git-commit-msg-linter": "5.0.4",
+    "husky": "8.0.3",
+    "lint-staged": "13.2.3",
+    "ts-node-dev": "2.0.0",
+    "typescript": "4.7.4"
+  },
+  "dependencies": {
   }
 }

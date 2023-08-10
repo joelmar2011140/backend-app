@@ -2,6 +2,7 @@ import { createServer } from 'http'
 import dotenv from 'dotenv'
 import { logger } from './lib/logger'
 import { app } from './app/app'
+import { startDb } from './lib/prisma'
 
 dotenv.config()
 
@@ -11,6 +12,7 @@ function startServer (): void {
   server.listen(port, async () => {
     try {
       logger.info(`Server running on port ${port}`)
+      await startDb()
     } catch (err: any) {
       logger.error('Error on startServer: ', err)
       process.exit(1)

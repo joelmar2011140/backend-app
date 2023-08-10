@@ -6,3 +6,32 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id            String          @id @default(uuid())
+  firstName     String
+  surname       String
+  email         String          @unique
+  phone         String
+  bio           String?
+  addresses     Address[]
+  SocialNetwork SocialNetwork[]
+}
+
+model Address {
+  id     String @id @default(uuid())
+  city   String
+  state  String
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+}
+
+model SocialNetwork {
+  id         String  @id @default(uuid())
+  username   String?
+  name       String?
+  profileUrl String
+  urlImage   String
+  user       User    @relation(fields: [userId], references: [id])
+  userId     String
+}
